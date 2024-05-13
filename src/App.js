@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import axios from 'axios';
 import './App.css';
+import ObservationForm from './ObservationForm';
+import GeneratedDetails from './GeneratedDetails';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [details, setDetails] = useState(null);
+
+    const handleDetailsGenerated = (data) => {
+        setDetails(data);
+    };
+
+    return (
+        <div className="container">
+            <h1>Safety Audit Observation</h1>
+            <ObservationForm onDetailsGenerated={handleDetailsGenerated} />
+            {details && <GeneratedDetails details={details} />}
+        </div>
+    );
 }
 
 export default App;
