@@ -12,8 +12,8 @@ const ObservationForm = ({ onDetailsGenerated }) => {
         event.preventDefault();
         console.log('Submit button clicked');
         try {
-            const response = await axios.post('http://localhost:5000/chatgpt', { observation });
-            const resJSON = JSON.parse(response.data.gpt)
+            const response = await axios.post('https://backend-safety-audit.onrender.com/chatgpt', { observation });
+            const resJSON = JSON.parse(response.data.gpt);
             console.log(resJSON, typeof(resJSON));
             onDetailsGenerated(resJSON);
         } catch (error) {
