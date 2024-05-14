@@ -6,10 +6,8 @@ const GeneratedDetails = ({ details }) => {
             <h2>Generated Details</h2>
             <p>Observation: {details.observation}</p>
             <p>Element: {details.element}</p>
-            <p>Standard: {details.standard}</p>
-            <p>Recommendation: {details.recommendation}</p>
-            <p>Risk Level: {details.risk_level}</p>
-
+            <p>Element: {details.element}</p>
+            <p>Recommendation: {details.Recommendation}</p>
         </div>
     );
 };
