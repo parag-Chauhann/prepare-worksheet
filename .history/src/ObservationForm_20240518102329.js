@@ -22,7 +22,7 @@ const ObservationForm = ({ onDetailsGenerated }) => {
             onDetailsGenerated(finalData);
         } catch (error) {
             if (error.response) {
-                console.error('Error response from the server:', error.response.data);
+                console.error('Error response from server:', error.response.data);
             } else if (error.request) {
                 console.error('No response is received:', error.request);
             } else {

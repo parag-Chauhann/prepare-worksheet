@@ -15,6 +15,7 @@ const ObservationForm = ({ onDetailsGenerated }) => {
             // const response = await axios.post('http://localhost:5000/chatgpt', { observation });
 
             const response = await axios.post('https://backend-worksheet-generator.onrender.com/chatgpt', { observation });
+            lo
 
             const finalData = JSON.parse(response.data.response);
 
@@ -22,9 +23,9 @@ const ObservationForm = ({ onDetailsGenerated }) => {
             onDetailsGenerated(finalData);
         } catch (error) {
             if (error.response) {
-                console.error('Error response from the server:', error.response.data);
+                console.error('Error response from server:', error.response.data);
             } else if (error.request) {
-                console.error('No response is received:', error.request);
+                console.error('No response received:', error.request);
             } else {
                 console.error('Error setting up request:', error.message);
             }
