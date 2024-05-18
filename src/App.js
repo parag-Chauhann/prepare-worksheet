@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './App.css';
 import ObservationForm from './ObservationForm';
 import GeneratedDetails from './GeneratedDetails';
@@ -8,6 +7,7 @@ function App() {
     const [details, setDetails] = useState(null);
 
     const handleDetailsGenerated = (data) => {
+        console.log('Received data from backend:', data);
         setDetails(data);
     };
 
