@@ -12,9 +12,9 @@ const ObservationForm = ({ onDetailsGenerated }) => {
         event.preventDefault();
         console.log('Sending observation to backend:', observation);
         try {
-            // const response = await axios.post('http://localhost:5000/chatgpt', { observation });
+            const response = await axios.post('http://localhost:5000/chatgpt', { observation });
 
-            const response = await axios.post('https://backend-worksheet-generator.onrender.com/chatgpt', { observation });
+            // const response = await axios.post('https://backend-worksheet-generator.onrender.com/chatgpt', { observation });
 
             const finalData = JSON.parse(response.data.response);
 
