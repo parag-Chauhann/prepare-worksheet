@@ -1,8 +1,8 @@
+import React, { useState } from 'react';
 import axios from 'axios';
 import { signOut } from 'firebase/auth';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { auth } from '../FireBase/firebase';
+import { useNavigate } from 'react-router-dom';
 
 const ObservationForm = ({ onDetailsGenerated }) => {
   const [observation, setObservation] = useState('');
@@ -21,12 +21,12 @@ const ObservationForm = ({ onDetailsGenerated }) => {
     event.preventDefault();
     console.log('Sending observation to backend:', observation);
     try {
-      // const response = await axios.post('http://localhost:5000/chatgpt', { 
-      //   observation,
-      //   recommendation // Include recommendation in the request body
-      // });
-      
-      const response = await axios.post('https://backend-worksheet-generator.onrender.com/chatgpt', { 
+      const response = await axios.post('http://localhost:5000/chatgpt', { 
+        observation,
+        recommendation // Include recommendation in the request body
+      });
+
+            const response = await axios.post('http://localhost:5000/chatgpt', { 
         observation,
         recommendation // Include recommendation in the request body
       });

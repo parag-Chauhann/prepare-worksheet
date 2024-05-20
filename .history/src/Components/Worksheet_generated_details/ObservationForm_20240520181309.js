@@ -1,8 +1,8 @@
+import React, { useState } from 'react';
 import axios from 'axios';
 import { signOut } from 'firebase/auth';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { auth } from '../FireBase/firebase';
+import { useNavigate } from 'react-router-dom';
 
 const ObservationForm = ({ onDetailsGenerated }) => {
   const [observation, setObservation] = useState('');
