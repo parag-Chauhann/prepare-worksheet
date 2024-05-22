@@ -1,12 +1,17 @@
+import React, { useState } from 'react';
 import axios from 'axios';
 import { signOut } from 'firebase/auth';
-import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../FireBase/firebase';
+import ErrorModal from './ErrorModel/ErrorModel'; 
+import './Home.css';
 
 const ObservationForm = ({ onDetailsGenerated }) => {
   const [observation, setObservation] = useState('');
-  const [recommendation, setRecommendation] = useState(''); // New state for recommendation
+  const [recommendation, setRecommendation] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [showError, setShowError] = useState(false); // State to control the visibility of the error modal
+  const [errorMessage, setErrorMessage] = useState(''); // State to hold the error message
   const navigate = useNavigate();
 
   const handleChangeObservation = (event) => {
@@ -20,43 +25,43 @@ const ObservationForm = ({ onDetailsGenerated }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log('Sending observation to backend:', observation);
+    setLoading(true);
     try {
-      // const response = await axios.post('http://localhost:5000/chatgpt', { 
-      //   observation,
-      //   recommendation // Include recommendation in the request body
-      // });
-      
       const response = await axios.post('https://backend-worksheet-generator.onrender.com/chatgpt', { 
         observation,
-        recommendation // Include recommendation in the request body
+        recommendation 
       });
 
-      // Retrieve response data
       let responseData = response.data.response;
       console.log('Raw response data from server:', responseData);
 
-      // Parse JSON if needed
       let finalData;
-      try {
-        finalData = JSON.parse(responseData);
-      } catch (error) {
-        console.error('Failed to parse JSON response from server:', error);
-        // If parsing fails, assume the response is already in object format
+      if (typeof responseData === 'string') {
+        try {
+          finalData = JSON.parse(responseData);
+        } catch (error) {
+          console.error('Failed to parse JSON response from server:', error);
+          console.error('Response data causing the error:', responseData);
+          finalData = undefined;
+        }
+      } else {
         finalData = responseData;
+      }
+
+      if (!finalData || Object.keys(finalData).length === 0) {
+        throw new Error("We're experiencing issues processing your request. Please try again");
       }
 
       console.log('Received response from backend:', finalData);
       onDetailsGenerated(finalData);
-      setObservation(''); // Clear the form input
-      setRecommendation(''); // Clear the recommendation input
+      setObservation('');
+      setRecommendation('');
     } catch (error) {
-      if (error.response) {
-        console.error('Error response from the server:', error.response.data);
-      } else if (error.request) {
-        console.error('No response received:', error.request);
-      } else {
-        console.error('Error setting up request:', error.message);
-      }
+      console.error('Error occurred while submitting:', error);
+      setErrorMessage(error.message);
+      setShowError(true); // Show the error modal
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -65,7 +70,11 @@ const ObservationForm = ({ onDetailsGenerated }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     navigate("/login");
-  }
+  };
+
+  const handleCloseErrorModal = () => {
+    setShowError(false);
+  };
 
   return (
     <div className="form-container">
@@ -87,8 +96,10 @@ const ObservationForm = ({ onDetailsGenerated }) => {
           onChange={handleChangeRecommendation}
         />
         <br />
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={loading}>Submit</button>
       </form>
+      {loading && <div className="loader">Loading...</div>}
+      <ErrorModal show={showError} handleClose={handleCloseErrorModal} message={errorMessage} />
     </div>
   );
 };
