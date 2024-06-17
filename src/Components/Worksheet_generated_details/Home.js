@@ -6,6 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { saveAs } from 'file-saver';
 import HTMLDocx from 'html-docx-js/dist/html-docx';
 import './Home.css';
+import Navbar from '../Navbar/Navbar';
 
 const Home = () => {
   const [detailsList, setDetailsList] = useState([]);
@@ -111,13 +112,15 @@ const Home = () => {
       </table>
     `;
     const blob = HTMLDocx.asBlob(tableHTML);
-    saveAs(blob, 'table.docx');
+    saveAs(blob, 'Safety Audit Worksheet.docx');
   };
 
   return (
-    <div className="container">
-      <h1>Welcome, {userName}</h1>
-      <h2>Safety Audit Observation</h2>
+    <div className="Home-container">
+    <Navbar />
+<h1 className='headingh1'>Welcome, {userName}</h1>
+<h2 className='headingh2'>Safety Audit Worksheet Generator</h2>
+
       <button onClick={() => setView('current')}>Current Task</button>
       <button onClick={() => setView('history')}>History</button>
       {view === 'current' && (

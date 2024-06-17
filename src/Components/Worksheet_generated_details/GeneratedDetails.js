@@ -3,6 +3,7 @@ import React from 'react';
 const GeneratedDetails = ({ details }) => {
   return (
     <tr className="generated-details">
+      <br />
       <td>{details.observation}</td>
       <td>{details.element}</td>
       <td>

@@ -1,0 +1,155 @@
+/* ObservationFor.css */
+.form-container {
+    max-width: 800px;
+    width: 90%;  
+    background: rgb(19, 137, 61);
+    background: linear-gradient(162deg, rgba(19, 137, 61, 0.8352591036414566) 38%, rgba(36, 14, 166, 0.3982843137254902) 91%);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.input-group {
+    position: relative;
+    margin: 20px 0;
+}
+
+.input-group textarea {
+    width: 600px;
+    min-height: 70px;
+    font-size: 19px;
+    color: black;
+    padding: 20px 15px;
+    border: 2.5px solid white;
+    outline: none;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    box-sizing: border-box;
+    resize: none;
+    overflow: hidden;
+}
+
+.input-group label {
+    position: absolute;
+    top: 42%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: black;
+    /* color: rgb(255, 255, 255); */
+    padding: 0 5px;
+    pointer-events: none;
+    transition: 0.4s;
+    font-weight: 500;
+}
+
+.input-group textarea:focus~label,
+.input-group textarea.clicked~label {
+    top: 0px;
+    font-size: 14px;
+    background: #002D62;
+    color: white;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+.button-19 {
+    appearance: button;
+    background-color: #1899D6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: din-round, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.button-19:after {
+    background-clip: padding-box;
+    background-color: #1CB0F6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+    user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+    cursor: auto;
+}
+
+.button-19:active {
+    border-width: 4px 0 0;
+    background: none;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .form-container {
+        margin-top: 60px;
+        padding: 30px;
+    }
+
+    .input-group textarea {
+        font-size: 16px;
+        width: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 20px;
+        margin-top: 40px;
+    }
+
+    .input-group textarea {
+        font-size: 14px;
+        width: 260px;
+    }
+
+        .input-group label {
+            font-size: 0.9em;
+        }
+
+
+    .button-19 {
+        padding: 10px 12px;
+    }
+}

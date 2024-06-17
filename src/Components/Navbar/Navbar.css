@@ -1,0 +1,179 @@
+.NavbarItems {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    padding: 0px 30px;
+    background-color: #240ea6;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+}
+
+.Navbar-logo {
+    justify-self: start;
+    cursor: pointer;
+    height: 5rem;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 10px;
+    list-style: none;
+    align-items: center;
+    text-align: center;
+    justify-content: end;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: white;
+    padding: 0.7rem 1rem;
+    white-space: nowrap;
+    height: 20px;
+}
+
+.nav-links img {
+    padding-right: 10px;
+}
+
+.nav-links:hover {
+    background: #00b050;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-icon {
+    height: 20px;
+}
+
+.nav-sideMenu {
+    height: 20px;
+    color: white;
+}
+
+.menu-icons {
+    display: none;
+}
+
+button.logout-btn {
+    padding: 0.7rem 0.9em;
+    margin-top: -10px;
+    border: 2px solid #79b874;
+    border-radius: 0.75em;
+    color: white;
+    text-transform: uppercase;
+    background: #907ff4;
+    transform-style: preserve-3d;
+    transition: 1s cubic-bezier(0, 0, -6, 1);
+    position: relative;
+    z-index: 150;
+    /* Ensure the logout button is above other elements */
+}
+
+button.logout-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: #462aed;
+    box-shadow: 0 0 0 2px #b18597, 0 .625em 0 0 #b3b3b1;
+    transform: translate3d(0, .75em, -1em);
+    transition: .15s cubic-bezier(0, 0, -6, 1);
+}
+
+button.logout-btn:hover {
+    background: #3a1e9f;
+    transform: translate(0, .25em);
+}
+
+button.logout-btn:hover::before {
+    box-shadow: 0 0 0 2px #b18549, 0 .5em 0 0 #b3b3b1;
+    transform: translate3d(0, .5em, -1em);
+}
+
+button.logout-btn:active {
+    background: #240ea6;
+    transform: translate(0, .75em);
+}
+
+button.logout-btn:active::before {
+    box-shadow: 0 0 0 2px #b18597, 0 .625em 0 0 #b3b3b1;
+    transform: translate(0, 0, -1em);
+}
+
+@media screen and (max-width: 850px) {
+    .NavbarItems {
+        z-index: 99;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: rgba(116, 107, 107, 0.25);
+        box-shadow: 0 8px 32px 0 rgb(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        border-radius: 13px;
+        width: 100%;
+        height: 500px;
+        position: absolute;
+        top: 0%;
+        left: -110%;
+        align-items: stretch;
+        padding: 80px 0 30px 0;
+        margin: 0;
+        z-index: 200;
+        transition: 0.3s ease-in-out;
+    }
+
+    .nav-menu.active {
+        left: 0%;
+    }
+
+    .nav-links {
+        display: block;
+        width: 100%;
+        padding: 2rem 0;
+        color: #222;
+    }
+
+    .nav-links:hover {
+        background: rgba(48, 49, 49, 0.5);
+        backdrop-filter: blur(20px);
+        color: white;
+    }
+
+    .menu-icons {
+        display: block;
+        z-index: 250;
+    }
+
+    button.logout-btn {
+        padding: 0.7rem 0.9em;
+        margin-top: 20px;
+        border: 2px solid #79b874;
+        border-radius: 0.75em;
+        color: white;
+        text-transform: uppercase;
+        background: #907ff4;
+        transform-style: preserve-3d;
+        transition: 1s cubic-bezier(0, 0, -6, 1);
+        margin: 20px auto;
+        width: 150px;
+        display: block;
+        z-index: 150;
+    }
+}
